@@ -1,24 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
+import AddWeight from "./pages/AddWeight";
+import WeightHistory from "./pages/WeightHistory";
+import WeightDifference from "./pages/WeightDifference";
+import Navbar from "./components/Navbar";
 
+const PrivateRoute = ({ children }) => {
+  const user = JSON.parse(localStorage.getItem("user"));
+  return user ? children : <Navigate to="/login" />;
+};
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+
+        <Route
+          path="/*"
+          element={
+            <PrivateRoute>
+              <Navbar />
+              <Routes>
+                <Route path="add-weight" element={<AddWeight />} />
+                <Route path="history" element={<WeightHistory />} />
+                <Route path="difference" element={<WeightDifference />} />
+                <Route path="*" element={<Navigate to="/add-weight" />} />
+              </Routes>
+            </PrivateRoute>
+          }
+        />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
