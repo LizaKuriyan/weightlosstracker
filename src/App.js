@@ -8,29 +8,56 @@ import Navbar from "./components/Navbar";
 
 const PrivateRoute = ({ children }) => {
   const user = JSON.parse(localStorage.getItem("user"));
-  return user ? children : <Navigate to="/login" />;
+  return user ? children : <Navigate to="/login" replace />;
 };
+
 function App() {
   return (
     <BrowserRouter>
       <Routes>
+        <Route path="/" element={<Navigate to="/login" />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
 
+        {/* Protected routes */}
         <Route
-          path="/*"
+          path="/add-weight"
           element={
             <PrivateRoute>
-              <Navbar />
-              <Routes>
-                <Route path="add-weight" element={<AddWeight />} />
-                <Route path="history" element={<WeightHistory />} />
-                <Route path="difference" element={<WeightDifference />} />
-                <Route path="*" element={<Navigate to="/add-weight" />} />
-              </Routes>
+              <>
+                <Navbar />
+                <AddWeight />
+              </>
             </PrivateRoute>
           }
         />
+
+        <Route
+          path="/history"
+          element={
+            <PrivateRoute>
+              <>
+                <Navbar />
+                <WeightHistory />
+              </>
+            </PrivateRoute>
+          }
+        />
+
+        <Route
+          path="/difference"
+          element={
+            <PrivateRoute>
+              <>
+                <Navbar />
+                <WeightDifference />
+              </>
+            </PrivateRoute>
+          }
+        />
+
+        <Route path="*" element={<Navigate to="/login" />} />
+
       </Routes>
     </BrowserRouter>
   );

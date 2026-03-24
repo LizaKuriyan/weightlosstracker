@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import "../styles/Signup.css"; // ✅ import css
 
 export default function Signup() {
   const [email, setEmail] = useState("");
@@ -10,6 +11,12 @@ export default function Signup() {
   const handleSignup = () => {
     if (!email || !password || !confirmPassword) {
       alert("All fields are required");
+      return;
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      alert("Please enter a valid email address");
       return;
     }
 
@@ -34,7 +41,7 @@ export default function Signup() {
     users.push({
       email,
       password,
-      weights: []   
+      weights: []
     });
 
     localStorage.setItem("users", JSON.stringify(users));
@@ -44,34 +51,44 @@ export default function Signup() {
   };
 
   return (
-    <div className="signup-container">
-      <h2>Signup</h2>
+    <div className="signup-wrapper">
+      <div className="signup-card">
+        <h3>Signup</h3>
 
-      <input
-        type="email"
-        placeholder="Email"
-        value={email}
-        onChange={e => setEmail(e.target.value)}
-      />
+        <label className="signup-label">Email:</label>
+        <input
+          type="email"
+          className="signup-input"
+          placeholder="Enter your email"
+          value={email}
+          onChange={e => setEmail(e.target.value)}
+        />
 
-      <input
-        type="password"
-        placeholder="Password (min 8 characters)"
-        value={password}
-        onChange={e => setPassword(e.target.value)}
-      />
+        <label className="signup-label">Password:</label>
+        <input
+          type="password"
+          className="signup-input"
+          placeholder="Minimum 8 characters"
+          value={password}
+          onChange={e => setPassword(e.target.value)}
+        />
 
-      <input
-        type="password"
-        placeholder="Confirm Password"
-        value={confirmPassword}
-        onChange={e => setConfirmPassword(e.target.value)}
-      />
+        <label className="signup-label">Confirm Password:</label>
+        <input
+          type="password"
+          className="signup-input"
+          placeholder="Re-enter password"
+          value={confirmPassword}
+          onChange={e => setConfirmPassword(e.target.value)}
+        />
 
-      <button onClick={handleSignup}>Signup</button>
+        <button className="signup-btn" onClick={handleSignup}>
+          Signup
+        </button>
 
-      <div className="link">
-        Already have an account? <Link to="/login">Login</Link>
+        <div className="signup-link">
+          Already have an account? <Link to="/login">Login</Link>
+        </div>
       </div>
     </div>
   );

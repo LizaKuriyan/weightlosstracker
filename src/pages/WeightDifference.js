@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "../styles/WeightDifference.css";
 
 export default function WeightDifference() {
   const [start, setStart] = useState("");
@@ -27,35 +28,41 @@ export default function WeightDifference() {
       return;
     }
 
-    const diff = s.weight - e.weight;
-    setResult(diff);
+    const diff = parseFloat(s.weight) - parseFloat(e.weight);
+    setResult(diff.toFixed(2));
   };
 
   return (
-    <div className="container">
-      <h3 style={{fontSize:"25px"}}>Find Weight Difference</h3>
+    <div className="diff-wrapper">
+      <div className="diff-card">
+        <h3 className="diff-title">Find Weight Difference</h3>
 
-      <input
-        type="date"
-        value={start}
-        onChange={e => setStart(e.target.value)}
-      />
+        <input
+          type="date"
+          className="diff-input"
+          value={start}
+          onChange={e => setStart(e.target.value)}
+        />
 
-      <input
-        type="date"
-        value={end}
-        onChange={e => setEnd(e.target.value)}
-      />
+        <input
+          type="date"
+          className="diff-input"
+          value={end}
+          onChange={e => setEnd(e.target.value)}
+        />
 
-      <button onClick={calculate}>Calculate</button>
+        <button className="diff-btn" onClick={calculate}>
+          Calculate
+        </button>
 
-      {error && <p className="error">{error}</p>}
+        {error && <p className="diff-error">{error}</p>}
 
-      {result !== null && (
-        <p className="result">
-          Weight Difference: <strong>{result} kg</strong>
-        </p>
-      )}
+        {result !== null && (
+          <div className="diff-result">
+            Weight Difference: {result} kg
+          </div>
+        )}
+      </div>
     </div>
   );
 }

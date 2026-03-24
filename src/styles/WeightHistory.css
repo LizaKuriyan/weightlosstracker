@@ -1,0 +1,110 @@
+/* WeightHistory.css */
+
+.history-wrapper {
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.history-card {
+  width: 700px;
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+}
+
+.history-title {
+  text-align: center;
+  color: #c62828;
+  margin-bottom: 20px;
+}
+
+.history-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.history-table th {
+  background: #c62828;
+  color: white;
+  padding: 10px;
+  text-align: center;
+}
+
+.history-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+}
+
+.history-table tr:hover {
+  background: #f9f9f9;
+}
+
+.history-input {
+  width: 80px;
+  padding: 5px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.btn-group {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+}
+
+.btn {
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.btn.btn-edit {
+  background-color: #ff9800;
+  color: white;
+}
+
+.btn.btn-delete {
+  background-color: #e53935;
+  color: white;
+}
+
+.btn.btn-save {
+  background: #4caf50;
+  color: white;
+}
+
+.btn.btn-cancel {
+  background: #777;
+  color: white;
+}
+
+.btn:hover {
+  opacity: 0.9;
+}
+
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.page-btn {
+  background: none;
+  border: none;
+  color: #c62828;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.page-btn:disabled {
+  color: #ccc;
+  cursor: default;
+  text-decoration: none;
+}

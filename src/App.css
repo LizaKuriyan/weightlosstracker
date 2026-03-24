@@ -1,38 +1,127 @@
-.App {
+/* ===== BODY ===== */
+body {
+  margin: 0;
+  font-family: "Segoe UI", sans-serif;
+  background: #f5f5f5;
+  background-image: url("https://media.istockphoto.com/id/1125758374/photo/healthy-lifestyle-concept-slimming.jpg?s=612x612&w=0&k=20&c=rBDLu9RBiBkof4XZepvmzJwamKcC3RZfyT2WGeCBroY");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* ===== NAVBAR ===== */
+.navbar {
+  background: #c62828 !important;
+  height: 90px;
+}
+
+.navbar h1 {
+  color: white;
+  font-style: italic;
+  font-size: 25px;
+}
+
+/* ===== HEADINGS ===== */
+h2, h3, h1 {
+  text-align: center;
+  color: #c62828;
+}
+.btn{
+  background-color: #c62828;
+}
+/* ===== LINKS ===== */
+.linkto {
+  color: #c62828;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.linkto:hover {
+  text-decoration: underline;
+}
+
+.link {
+  font-style: italic;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* ===== FORM ELEMENTS ===== */
+label {
+  font-weight: 500;
+  color: #333;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+input {
+  border-radius: 6px !important;
+  padding: 10px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+/* ===== BUTTONS ===== */
+button {
+  border-radius: 6px !important;
+  font-weight: 500;
+}
+
+button:hover {
+  opacity: 0.95;
+}
+
+/* ===== CARD (Bootstrap override enhancement) ===== */
+.card {
+  border-radius: 12px !important;
+  border: none;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+/* ===== TABLE ===== */
+.table {
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.table th {
+  background-color: #c62828 !important;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+/* ===== PAGINATION ===== */
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
+.pagination button {
+  border: 1px solid #c62828;
+  color: #c62828;
+  background: transparent;
+  padding: 5px 15px;
+  border-radius: 5px;
+}
+
+.pagination button:hover {
+  background: #c62828;
+  color: white;
+}
+
+.pagination button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ===== ALERT TEXT ===== */
+.text-danger {
+  font-weight: 500;
+}
+
+.alert-success {
+  font-weight: 500;
+  border-radius: 8px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .card {
+    margin: 10px;
   }
 }
